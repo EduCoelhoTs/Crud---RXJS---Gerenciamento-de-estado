@@ -1,0 +1,59 @@
+<main class="w-ful h-screen flex justify-center items-center bg-slate-100">
+  <!-- <mat-spinner *ngIf="spinner"></mat-spinner> -->
+  <mat-card class="w-2/5 py-6">
+    <mat-card-title *ngIf="!id" class="flex justify-center text-center py-6"
+      >Cadastre-se</mat-card-title
+    >
+    <mat-card-title *ngIf="!!id" class="flex justify-center text-center py-6"
+      >Editar Usuário</mat-card-title
+    >
+    <mat-card-content class="">
+      <form [formGroup]="form" class="flex flex-col w-full">
+        <mat-form-field class="example-full-width mb-3">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput formControlName="nome" />
+          <mat-hint>Digite seu nome</mat-hint>
+          <mat-error *ngIf="form.get('nome')?.hasError('required')">
+            Nome é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width mb-3">
+          <mat-label>Email</mat-label>
+          <input type="text" matInput formControlName="email" />
+          <mat-hint>Digite seu email</mat-hint>
+          <mat-error *ngIf="form.get('email')?.hasError('required')">
+            Nome é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width mb-3">
+          <mat-label>CPF</mat-label>
+          <input type="text" matInput formControlName="cpf" />
+          <mat-hint>Digite seu CPF</mat-hint>
+          <mat-error *ngIf="form.get('cpf')?.hasError('required')">
+            Nome é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <div class="py-4 mt-5 flex justify-center w-full">
+          <button
+            *ngIf="!id"
+            mat-raised-button
+            class="w-2/3"
+            color="primary"
+            (click)="cadastrar()"
+          >
+            Cadastrar
+          </button>
+          <button
+            *ngIf="!!id"
+            mat-raised-button
+            class="w-2/3"
+            color="primary"
+            (click)="cadastrar()"
+          >
+            Editar
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</main>
